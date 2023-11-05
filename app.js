@@ -128,5 +128,17 @@ function processEmails() {
   });
 }
 
-// Run the email processing tasks every 20 seconds
-setInterval(processEmails, 20000); // 20 seconds in milliseconds
+const minInterval = 45000; // 45 seconds in milliseconds
+const maxInterval = 120000; // 120 seconds in milliseconds
+
+function getRandomInterval() {
+  return (
+    Math.floor(Math.random() * (maxInterval - minInterval + 1)) + minInterval
+  );
+}
+
+const randomInterval = getRandomInterval();
+
+console.log("Random Interval:", randomInterval, "milliseconds");
+
+setInterval(processEmails, getRandomInterval());
